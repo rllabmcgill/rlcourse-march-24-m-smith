@@ -17,6 +17,7 @@
 \usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage{animate}
+\usepackage{algorithm2e}
 % COMMANDS %
 \newcommand{\set}[1]{\left\{#1\right\}}
 \newcommand{\abs}[1]{\left| #1\right|}
@@ -120,7 +121,22 @@ This slide is just to add slides.
 \end{frame}
 
 
-\section{Control With Gradient Methods}
+\section{Control With Gradient TD Methods}
+\begin{frame}{Control With Gradient TD Methods}
+ \begin{algorithm}[H]
+    $\theta \sim$ random\\
+    $s \sim$ inital state
+    \While{not terminal}{
+        Choose $a$ from $\epsilon$-Greedy on $Q_\theta(s,a)$\\
+        Observe $(s',r)$\\
+        Choose $a' = max_i(Q_\theta(s',i))$\\
+        update $Q_\theta$ according to TDC($\theta$,s,a,r,$s',a'$)\\
+        $s = s' $
+
+    }
+ \caption{Greedy-QC}
+\end{algorithm}
+\end{frame}
 \begin{frame}{Simply Plug TDC or GTD2 into SARSA or Q-learning!}
 This is in the original feature space!
   \begin{figure}
